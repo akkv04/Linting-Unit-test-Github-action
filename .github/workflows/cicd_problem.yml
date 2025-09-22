@@ -17,4 +17,4 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v2
     - name: create artifact
-      run : tar -xf artifact.tar.gz .
+      run : tar -zcf artifact.tar.gz .
