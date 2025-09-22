@@ -17,8 +17,8 @@ jobs:
       run: pip install --quiet --requirement requirements.txt
     - name:  Lint code
       run: |
-        flake8 --ignore=E501,E231 *.py
-        pylint --disable=C0301 --disable=C0326 *.py 
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
     - name:  Run unit tests
       run: |
         python -m unittest --verbose --failfast
