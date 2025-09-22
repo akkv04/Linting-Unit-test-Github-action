@@ -1,21 +1,24 @@
-name: Pipeline
+name: pipeline
 
 on: [push]
 env:
-  APPLICATION_NAME: app2
+ APPLICATION_NAME: APP2
 jobs:
-  lint:
-    runs-on: ubuntu-18.04
-    steps:
-    - uses: actions/checkout@v1
-    - name: Setup Python environment
-      uses: actions/setup-python@v1.1.1
+ lint:
+  runs-on: ubuntu-latest
+  steps:
+    - name: checkout Code
+      uses: actions/checkout@v2
+    - name: Setup python environment
+      uses: actions/setup-python@v4
     - name: Install requirements
       run: pip install --quiet --requirement requirements.txt
-    - name: Lint code
+    - name:  Lint code
       run: |
         flake8 --ignore=E501,E231 *.py
-        pylint --disable=C0301 --disable=C0326 *.py
-    - name: Run unit tests
+        pylint --disable=C0301 --disable=C0326 *.py 
+    - name:  Run unit tests
       run: |
         python -m unittest --verbose --failfast
+
+
